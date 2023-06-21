@@ -13,8 +13,6 @@ function playGame(playerMove) {
 
   let playerMoveDisplay = "";
 
-  console.log(playerMove);
-
   if (playerMove === "rock") {
     if (computerMove === "&#128074;") {
       result = "TIE";

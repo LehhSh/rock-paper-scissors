@@ -15,7 +15,7 @@
         <button
           class="main-btn"
           onclick="
-            playGame('&#128074;');
+            playGame('rock');
           "
         >
           &#128074;
@@ -24,7 +24,7 @@
         <button
           class="main-btn"
           onclick="
-            playGame('&#9995;');
+            playGame('paper');
           "
         >
           &#9995;
@@ -33,7 +33,7 @@
         <button
           class="main-btn"
           onclick="
-            playGame('&#9996;');
+            playGame('scissors');
         "
         >
           &#9996;
@@ -77,7 +77,11 @@
 
         let result = "";
 
-        if (playerMove === "&#128074;") {
+        let playerMoveDisplay = "";
+
+        console.log(playerMove);
+
+        if (playerMove === "rock") {
           if (computerMove === "&#128074;") {
             result = "TIE";
           } else if (computerMove === "&#9995;") {
@@ -85,7 +89,7 @@
           } else if (computerMove === "&#9996;") {
             result = "WIN";
           }
-        } else if (playerMove === "&#9995;") {
+        } else if (playerMove === "paper") {
           if (computerMove === "&#128074;") {
             result = "WIN";
           } else if (computerMove === "&#9995;") {
@@ -93,7 +97,7 @@
           } else if (computerMove === "&#9996;") {
             result = "LOSE";
           }
-        } else {
+        } else if (playerMove === "scissors") {
           if (computerMove === "&#128074;") {
             result = "LOSE";
           } else if (computerMove === "&#9995;") {
@@ -111,6 +115,14 @@
           score.ties += 1;
         }
 
+        if (playerMove === "rock") {
+          playerMoveDisplay = "&#128074;";
+        } else if (playerMove === "paper") {
+          playerMoveDisplay = "&#9995;";
+        } else if (playerMove === "scissors") {
+          playerMoveDisplay = "&#9996;";
+        }
+
         localStorage.setItem("score", JSON.stringify(score));
 
         // alert(
@@ -121,7 +133,7 @@
 
         document.querySelector(
           ".js-moves"
-        ).innerHTML = `You ${playerMove} ${computerMove} Computer`;
+        ).innerHTML = `You ${playerMoveDisplay} ${computerMove} Computer`;
 
         updateScoreElement();
       }
